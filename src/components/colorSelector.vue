@@ -10,13 +10,13 @@
     <!-- 颜色开关 -->
     <iSwitch v-model="isGradient" size="large" class="switch">
       <template #open>
-        <span>渐变</span>
+        <span>gradient</span>
       </template>
       <template #close>
-        <span>纯色</span>
+        <span>solid</span>
       </template>
     </iSwitch>
-    <!-- 渐变 -->
+    <!-- gradient -->
     <div v-if="isGradient">
       <div class="gradient-bar" :style="bgStr"></div>
       <!-- 颜色插件 -->
@@ -54,7 +54,7 @@ const generateFabricGradientFromColorStops = (handlers, width, height, orientati
     };
   };
 
-  // 生成线性渐变
+  // 生成线性gradient
   const generateLinear = (colorStops) => {
     const angleCoords = gradAngleToCoords(angle);
     return new fabric.Gradient({
@@ -69,7 +69,7 @@ const generateFabricGradientFromColorStops = (handlers, width, height, orientati
     });
   };
 
-  // 生成径向渐变
+  // 生成径向gradient
   const generateRadial = (colorStops) => {
     return new fabric.Gradient({
       type: 'radial',
@@ -107,11 +107,11 @@ const props = defineProps({
 });
 const emitChange = defineEmits(['change']);
 // const poptipCreated = ref(false);
-// 是否渐变
+// 是否gradient
 const isGradient = ref(false);
-// 纯色
+// solid
 const fill = ref('');
-// 渐变
+// gradient
 const bgStr = ref('background: linear-gradient(124deg, rgb(28, 27, 27) 0%, rgb(255, 0, 0) 100%);');
 const currentGradient = reactive({
   type: 'linear',
@@ -142,7 +142,7 @@ const checkColor = (val) => {
     isGradient.value = false;
     fill.value = val;
   } else {
-    // 渐变
+    // gradient
     isGradient.value = true;
     const activeObject = canvasEditor.canvas.getActiveObjects()[0];
     if (activeObject) {
@@ -166,7 +166,7 @@ const changeGradientColor = debounce(function (val) {
     setGradientBar(val);
   }
 }, 500);
-// 设置渐变颜色条
+// 设置gradient颜色条
 const setGradientBar = (val) => {
   if (val.gradient.type === 'linear') {
     bgStr.value = `background: ${val.style};`;
@@ -174,7 +174,7 @@ const setGradientBar = (val) => {
     bgStr.value = `background: ${val.style.replace('radial', 'linear')};`;
   }
 };
-// Fabric渐变bar背景设置
+// Fabricgradientbar背景设置
 const fabricGradientToBar = (val) => {
   // 百分比排序
   if (!val?.colorStops) return; // 防止从模板加载后出现colorStops报错
@@ -182,9 +182,9 @@ const fabricGradientToBar = (val) => {
   const str = val.colorStops.map((item) => `${item.color} ${item.offset * 100}%`);
   bgStr.value = `background: linear-gradient(124deg, ${str});`;
 };
-// Fabric渐变转css
+// Fabricgradient转css
 const fabricGradientToCss = (val, activeObject) => {
-  // 渐变类型
+  // gradient类型
   if (!val) return;
   currentGradient.type = val.type;
   currentGradient.degree = activeObject.get(props.angleKey, val.degree);
@@ -199,7 +199,7 @@ const fabricGradientToCss = (val, activeObject) => {
     };
   });
 };
-// css转Fabric渐变
+// css转Fabricgradient
 const cssToFabricGradient = (val, activeObject) => {
   const handlers = val.points.map((item) => ({
     offset: item.left / 100,
@@ -233,7 +233,7 @@ onMounted(() => {
   padding: 10px 0;
 }
 
-// 渐变条
+// gradient条
 .gradient-bar {
   width: 100%;
   height: 30px;
@@ -262,7 +262,7 @@ onMounted(() => {
   }
 }
 
-// 渐变选择器
+// gradient选择器
 :deep(.ui-color-picker) {
   .picker-area,
   .gradient-controls,

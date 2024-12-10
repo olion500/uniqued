@@ -14,7 +14,7 @@
           <logo></logo>
           <!-- 导入 -->
           <Divider type="vertical" />
-          在线设计工具
+          Online Design Tool
         </div>
 
         <div class="right">
@@ -40,7 +40,7 @@
             search
             v-model="filters.name.$containsi"
             enter-button
-            placeholder="请输入关键词"
+            placeholder="Search"
             @on-search="search"
           />
           <TagSelect v-model="filters.templ_type.$in" @on-change="search">
@@ -75,9 +75,7 @@
           show-sizer
         />
       </Content>
-      <Footer class="layout-footer-center">
-        2024 &copy; 北京迅单科技有限公司 京ICP备2022034407号-2
-      </Footer>
+      <Footer class="layout-footer-center">2024 &copy;</Footer>
     </Layout>
   </div>
 </template>

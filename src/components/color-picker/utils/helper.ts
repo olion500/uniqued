@@ -6,8 +6,8 @@
  * @LastEditTime: 2023-11-28 11:03:14
  */
 export const parseBackgroundValue = (value: string): string => {
-  if (value.startsWith('#')) return '纯色';
-  if (value.startsWith('linear-gradient')) return '渐变';
+  if (value.startsWith('#')) return 'solid';
+  if (value.startsWith('linear-gradient')) return 'gradient';
   return '图案';
 };
 

@@ -9,7 +9,7 @@
 <template>
   <div class="box attr-item-box" v-if="isOne && isMatchType">
     <!-- <h3>字体属性</h3> -->
-    <Divider plain orientation="left"><h4>字体属性</h4></Divider>
+    <Divider plain orientation="left"><h4>Font</h4></Divider>
     <div>
       <!-- <Divider plain orientation="left">{{ $t('attributes.font') }}</Divider> -->
       <div class="flex-view">
@@ -29,7 +29,7 @@
             <InputNumber
               v-model="baseAttr.fontSize"
               @on-change="(value) => changeCommon('fontSize', value)"
-              append="字号"
+              append="fontSize"
               :min="1"
             ></InputNumber>
           </div>

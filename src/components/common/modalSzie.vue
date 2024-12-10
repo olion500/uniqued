@@ -12,11 +12,11 @@
       {{ $t('importFiles.createDesign.customSize') }}
     </h3>
     <Form ref="formInline" inline :label-width="40">
-      <FormItem label="宽度">
-        <InputNumber v-model="width" :min="1" placeholder="请输入"></InputNumber>
+      <FormItem label="width">
+        <InputNumber v-model="width" :min="1" placeholder="Please enter"></InputNumber>
       </FormItem>
-      <FormItem label="高度">
-        <InputNumber v-model="height" :min="1" placeholder="请输入"></InputNumber>
+      <FormItem label="height">
+        <InputNumber v-model="height" :min="1" placeholder="Please enter"></InputNumber>
       </FormItem>
       <FormItem :label-width="0">
         <Button type="primary" @click="customSizeCreate">
@@ -82,7 +82,7 @@ const customSizeCreate = async () => {
     emit('set', width.value, height.value);
     modal.value = false;
   } else {
-    Message.warning('请检查尺寸');
+    Message.warning('please check size.');
   }
 };
 

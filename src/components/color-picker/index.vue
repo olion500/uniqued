@@ -13,7 +13,7 @@
     <div v-else class="title">{{ mode }}</div>
 
     <template v-if="showGradient">
-      <div v-show="mode === '渐变'" class="cp__gradient flex-center">
+      <div v-show="mode === 'gradient'" class="cp__gradient flex-center">
         <div class="cp__gradient-bar">
           <div
             ref="elGradientTrack"
@@ -71,9 +71,9 @@
         <input v-else class="native" type="color" @input="onClickStraw" />
       </div>
       <!-- <input :value="value" @input="$emit('update:value', $event.target.value)" class="input" /> -->
-      <input v-if="mode === '渐变'" class="input" :value="activeGradient.color" />
+      <input v-if="mode === 'gradient'" class="input" :value="activeGradient.color" />
       <input v-else :value="value" class="input" @blur="onInputBlur" />
-      <template v-if="mode === '纯色'">
+      <template v-if="mode === 'solid'">
         <div
           v-for="pc in predefine"
           :key="pc"
@@ -114,7 +114,7 @@ const props = defineProps({
 
   modes: {
     type: Array,
-    default: () => ['纯色', '渐变'], // 图案
+    default: () => ['solid', 'gradient'], // 图案
   },
 
   defaultColor: {
@@ -135,7 +135,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value', 'change', 'native-pick', 'blur']);
 
-const mode = ref(parseBackgroundValue(props.value)); // 颜色、渐变、图片
+const mode = ref(parseBackgroundValue(props.value)); // 颜色、gradient、图片
 const angle = ref(90);
 const gradients = ref([]);
 const hsla = reactive({ h: 0, s: 0, l: 0, a: 0 });
@@ -173,7 +173,7 @@ const record = {
 };
 
 const showGradient = computed(() => {
-  return props.modes.includes('渐变');
+  return props.modes.includes('gradient');
 });
 
 const sliderAlphaBackgroundStyle = computed(() => {
@@ -225,9 +225,9 @@ function onChangeHSLA(newHsla) {
   const hexA = HSLA2HexA(...Object.values(newHsla));
 
   let value;
-  if (mode.value === '纯色') {
+  if (mode.value === 'solid') {
     value = hexA;
-  } else if (mode.value === '渐变') {
+  } else if (mode.value === 'gradient') {
     activeGradient.value.color = hexA;
     value = toGradientString(angle.value, gradients.value);
   }
@@ -353,9 +353,9 @@ onBeforeUnmount(() => {
 });
 
 function recordValue(value) {
-  if (mode.value === '纯色') {
+  if (mode.value === 'solid') {
     record.color = value;
-  } else if (mode.value === '渐变') {
+  } else if (mode.value === 'gradient') {
     record.gradient = value;
   } else if (mode.value === '图案') {
     record.image = value;
@@ -363,7 +363,7 @@ function recordValue(value) {
 }
 
 function updateValue(value) {
-  // 纯色时value和props.value 一样导致不更新
+  // solid时value和props.value 一样导致不更新
   // if (value === props.value) return;
   recordValue(value);
   emit('update:value', value);
@@ -381,9 +381,9 @@ async function onChangeMode(value) {
   mode.value = value;
 
   let color;
-  if (value === '纯色') {
+  if (value === 'solid') {
     color = record.color;
-  } else if (value === '渐变') {
+  } else if (value === 'gradient') {
     color = record.gradient;
   } else if (value === '图案') {
     color = record.image;
@@ -392,9 +392,9 @@ async function onChangeMode(value) {
 }
 
 function changeMode(mode) {
-  if (mode === '纯色') {
+  if (mode === 'solid') {
     setColor(props.value);
-  } else if (mode === '渐变') {
+  } else if (mode === 'gradient') {
     if (gradients.value.length === 0) {
       props.value.match(/[^,]+/g).forEach((item, index) => {
         if (index === 0) {
@@ -520,7 +520,7 @@ async function onClickStraw(val) {
       console.log('用户取消了取色');
     }
   }
-  if (mode.value === '渐变') {
+  if (mode.value === 'gradient') {
     activeGradient.value.color = result;
     activeGradient.value = { ...activeGradient.value };
   } else {

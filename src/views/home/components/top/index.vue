@@ -9,10 +9,11 @@
       <Divider type="vertical" />
       <import-file></import-file>
       <Divider type="vertical" />
-      <Button type="text" to="/template" target="_blank">全部模板</Button>
-      <Divider type="vertical" />
 
-      <myTemplName></myTemplName>
+      <!-- <Button type="text" to="/template" target="_blank">template</Button> -->
+      <!-- <Divider type="vertical" /> -->
+      <!-- <myTemplName></myTemplName> -->
+
       <!-- 标尺开关 -->
       <Tooltip :content="$t('grid')">
         <iSwitch v-model="toggleModel" size="small" class="switch"></iSwitch>
@@ -22,17 +23,14 @@
     </div>
 
     <div class="right">
-      <a href="https://pro.kuaitu.cc/" target="_blank" alt="商业版">
-        <img width="15" :src="proIcon" alt="vue-fbric-editor" />
-      </a>
       <!-- 管理员模式 -->
       <admin />
       <!-- 预览 -->
       <previewCurrent />
-      <waterMark />
+      <!-- <waterMark /> -->
       <save></save>
-      <login></login>
-      <lang></lang>
+      <!-- <login></login> -->
+      <!-- <lang></lang> -->
     </div>
   </Header>
 </template>

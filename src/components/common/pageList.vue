@@ -34,7 +34,7 @@
         </div>
       </div>
       <Spin size="large" fix :show="pageLoading"></Spin>
-      <Divider plain v-if="isDownBottom">{{ pageData.length ? '已经到底了' : '暂无内容' }}</Divider>
+      <Divider plain v-if="isDownBottom">{{ pageData.length ? 'end' : 'no content' }}</Divider>
     </Scroll>
   </div>
 </template>

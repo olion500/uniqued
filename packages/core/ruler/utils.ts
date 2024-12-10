@@ -137,7 +137,7 @@ const drawMask = (
 ) => {
   ctx.save();
   const { isHorizontal, left, top, width, height, backgroundColor } = options;
-  // 创建一个线性渐变对象
+  // 创建一个线性gradient对象
   const gradient = isHorizontal
     ? ctx.createLinearGradient(left, height / 2, left + width, height / 2)
     : ctx.createLinearGradient(width / 2, top, width / 2, height + top);

@@ -23,7 +23,7 @@
     </Select>
     <Input
       class="input"
-      :placeholder="`在${typeText}中搜索`"
+      :placeholder="`search`"
       v-model="searchKeyWord"
       :disabled="loading"
       clearable
@@ -52,7 +52,7 @@ const searchKeyWord = ref('');
 const typeList = ref([]);
 const typeText = computed(() => {
   const info = typeList.value.find((item) => item.value === typeValue.value);
-  return info?.label || '全部';
+  return info?.label || 'all';
 });
 
 onMounted(async () => {
@@ -68,7 +68,7 @@ onMounted(async () => {
     });
     typeList.value = [
       {
-        label: '全部',
+        label: 'all',
         value: '',
       },
       ...list,

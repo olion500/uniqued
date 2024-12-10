@@ -18,8 +18,8 @@
         </Button>
         <template #list>
           <DropdownMenu>
-            <DropdownItem name="reName">重命名</DropdownItem>
-            <DropdownItem name="delete">删除</DropdownItem>
+            <DropdownItem name="reName">rename</DropdownItem>
+            <DropdownItem name="delete">delete</DropdownItem>
           </DropdownMenu>
         </template>
       </Dropdown>
@@ -60,18 +60,18 @@ const fileName = ref('');
 const reNameFile = () => {
   fileName.value = props.name;
   Modal.confirm({
-    title: '重命名文件夹',
+    title: 'rename directory',
     render: (h) => {
       return h(Input, {
         size: 'large',
         modelValue: fileName,
         autofocus: true,
-        placeholder: '请输入文件夹名称',
+        placeholder: 'enter directory name',
       });
     },
     onOk: async () => {
       if (fileName.value === '') {
-        Message.warning('文件夹名称不能为空');
+        Message.warning('directory name cannot be empty');
         return;
       }
       await reNameFileType(fileName.value, props.itemId);

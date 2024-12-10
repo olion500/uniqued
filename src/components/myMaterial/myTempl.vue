@@ -14,15 +14,15 @@
         <Button type="primary" icon="md-add"></Button>
         <template #list>
           <DropdownMenu>
-            <DropdownItem name="file">新建设计</DropdownItem>
-            <DropdownItem name="fileType">新建文件夹</DropdownItem>
+            <DropdownItem name="file">file</DropdownItem>
+            <DropdownItem name="fileType">fileType</DropdownItem>
           </DropdownMenu>
         </template>
       </Dropdown>
 
       <Input
         class="input"
-        placeholder="请输入关键词"
+        placeholder="enter keyword"
         v-model="filters.name.$contains"
         search
         :disabled="pageLoading"
@@ -164,18 +164,18 @@ const createType = (type) => {
   if (type === 'fileType') {
     fileTypeName.value = '';
     Modal.confirm({
-      title: '新建文件夹',
+      title: 'create new folder',
       render: (h) => {
         return h(Input, {
           size: 'large',
           modelValue: fileTypeName,
           autofocus: true,
-          placeholder: '请输入文件夹名称',
+          placeholder: 'enter folder name',
         });
       },
       onOk: async () => {
         if (fileTypeName.value === '') {
-          Message.warning('文件夹名称不能为空');
+          Message.warning('folder name cannot be empty');
           return;
         }
         await createdFileType(fileTypeName.value, filters.parentId.$eq);
@@ -193,7 +193,7 @@ const customSizeCreate = async (w, h) => {
 
 const filePath = ref([
   {
-    name: '全部',
+    name: 'all',
     parentId: '',
   },
 ]);

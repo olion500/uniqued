@@ -15,7 +15,7 @@ import { LANG } from '@/config/constants/app';
 
 const messages = {
   en: Object.assign(US, en), //将自己的英文包和iview提供的结合
-  zh: Object.assign(CN, zh), //将自己的中文包和iview提供的结合
+  // zh: Object.assign(CN, zh), //将自己的中文包和iview提供的结合
 };
 
 function getLocalLang() {

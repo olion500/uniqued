@@ -45,7 +45,7 @@ const leftBar = reactive([
   {
     //字体样式
     key: 'fontStyle',
-    name: computed(() => t('font_style')),
+    name: computed(() => t('font')),
     icon: 'ios-pulse',
   },
   {
@@ -54,18 +54,18 @@ const leftBar = reactive([
     name: computed(() => t('material.cartoon')),
     icon: 'ios-leaf-outline',
   },
-  {
-    // 图层
-    key: 'layer',
-    name: computed(() => t('layers')),
-    icon: 'md-reorder',
-  },
-  {
-    // 用户素材
-    key: 'myMaterial',
-    name: computed(() => t('mine')),
-    icon: 'ios-contact-outline',
-  },
+  // {
+  //   // 图层
+  //   key: 'layer',
+  //   name: computed(() => t('layers')),
+  //   icon: 'md-reorder',
+  // },
+  // {
+  //   // 用户素材
+  //   key: 'myMaterial',
+  //   name: computed(() => t('mine')),
+  //   icon: 'ios-contact-outline',
+  // },
 ]);
 // 隐藏工具条
 const hideToolsBar = () => {

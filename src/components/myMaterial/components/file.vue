@@ -24,8 +24,8 @@
           </Button>
           <template #list>
             <DropdownMenu>
-              <DropdownItem name="reName">重命名</DropdownItem>
-              <DropdownItem name="delete">删除</DropdownItem>
+              <DropdownItem name="reName">rename</DropdownItem>
+              <DropdownItem name="delete">delete</DropdownItem>
               <DropdownItem name="transfer">迁移目录</DropdownItem>
             </DropdownMenu>
           </template>
@@ -89,7 +89,7 @@ const fileName = ref('');
 const reNameFile = () => {
   fileName.value = props.name;
   Modal.confirm({
-    title: '重命名',
+    title: 'rename',
     render: (h) => {
       return h(Input, {
         size: 'large',

@@ -3,12 +3,12 @@
  * @Date: 2024-05-21 10:59:48
  * @LastEditors: 秦少卫
  * @LastEditTime: 2024-10-07 17:32:19
- * @Description: 渐变
+ * @Description: gradient
 -->
 
 <template>
   <div class="box attr-item-box" v-if="isOne && selectType !== 'image' && selectType !== 'group'">
-    <Divider plain orientation="left"><h4>颜色</h4></Divider>
+    <Divider plain orientation="left"><h4>Color</h4></Divider>
     <!-- 通用属性 -->
     <div class="bg-item">
       <Tooltip placement="top" theme="light">
@@ -16,7 +16,7 @@
         <template #content>
           <color-picker
             v-model:value="baseAttr.fill"
-            :modes="['渐变', '纯色']"
+            :modes="['gradient', 'solid']"
             @change="colorChange"
             @nativePick="dropColor"
           ></color-picker>
@@ -59,9 +59,9 @@ const colorChange = (value) => {
   const activeObject = canvasEditor.canvas.getActiveObjects()[0];
   if (activeObject) {
     const color = String(value.color).replace('NaN', '');
-    if (value.mode === '纯色') {
+    if (value.mode === 'solid') {
       activeObject.set('fill', color);
-    } else if (value.mode === '渐变') {
+    } else if (value.mode === 'gradient') {
       const currentGradient = cssToFabricGradient(
         toRaw(value.stops),
         activeObject.width,

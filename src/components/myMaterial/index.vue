@@ -9,15 +9,15 @@
 <template>
   <div class="my-material" v-if="isLogin">
     <Tabs v-model="type">
-      <TabPane label="模板" name="templ">
+      <TabPane label="template" name="templ">
         <myTempl v-if="type === 'templ'"></myTempl>
       </TabPane>
-      <TabPane label="图片" name="img">
+      <TabPane label="image" name="img">
         <uploadMaterial v-if="type === 'img'"></uploadMaterial>
       </TabPane>
     </Tabs>
   </div>
-  <div class="tip" v-else>请先登录</div>
+  <div class="tip" v-else>please sign in first</div>
 </template>
 
 <script setup name="ImportTmpl">

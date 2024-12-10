@@ -92,7 +92,7 @@ export default function usePageList({
   const typeList = ref([]);
   const typeText = computed(() => {
     const info = typeList.value.find((item) => item.value === typeValue.value);
-    return info?.lable || '全部';
+    return info?.lable || 'all';
   });
 
   // 素材列表
@@ -122,7 +122,7 @@ export default function usePageList({
       });
       typeList.value = [
         {
-          label: '全部',
+          label: 'all',
           value: '',
         },
         ...list,

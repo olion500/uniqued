@@ -26,9 +26,10 @@ const webInfo = ref({
 });
 
 const getWebInfoFun = async () => {
-  const res = await getWebInfo();
-  const info = pick(res.data.data.attributes, ['name', 'url']);
-  info.img = baseURL + get(res.data, 'data.attributes.logo.data.attributes.url');
+  const info = {
+    name: 'UNIQUED',
+    img: 'https://shop-phinf.pstatic.net/20241204_101/1733302191241fIAhH_PNG/91739393679765_87539651.png?type=m120',
+  };
   webInfo.value = info;
 };
 

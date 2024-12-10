@@ -17,7 +17,7 @@ const routes: RouteRecordRaw[] = [
           setToken(res.data.jwt);
         } else {
           logout();
-          alert('签名失败');
+          alert('Signature failed');
           window.location.href = '/';
         }
       }

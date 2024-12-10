@@ -23,7 +23,7 @@ export default function useMaterial() {
   const createTmpl = async (width, height, parentId = '') => {
     canvasEditor.clear();
     canvasEditor.setSize(width, height);
-    const name = dayjs().format('YYYY[年]MM[月]DD[日]HH[小时]mm[分钟]ss[秒]') + '创建的作品';
+    const name = dayjs().format('YYYY-MM-DD HH:mm:ss') + 'design';
     const data = await getCanvasCommonData();
     // 上传图片
     const templInfo = await createdTempl({
@@ -49,7 +49,7 @@ export default function useMaterial() {
   };
 
   const createTmplByCommon = async () => {
-    const name = dayjs().format('YYYY[年]MM[月]DD[日]HH[小时]mm[分钟]ss[秒]') + '创建的作品';
+    const name = dayjs().format('YYYY-MM-DD HH:mm:ss') + 'design';
     const data = await getCanvasCommonData();
     // 上传图片
     const templInfo = await createdTempl({

@@ -22,7 +22,7 @@
       </Select>
       <Input
         class="input"
-        :placeholder="`在${typeText}中搜索`"
+        :placeholder="`search`"
         v-model="searchKeyWord"
         search
         :disabled="pageLoading"
