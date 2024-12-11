@@ -9,7 +9,7 @@ RUN pnpm install
 
 RUN ["pnpm", "build"]
 
-FROM nginx:1.25.3
+FROM nginx:latest
 COPY --from=0 /app/dist /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/conf.d/
 
